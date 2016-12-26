@@ -11,42 +11,6 @@ class Socket extends React.Component {
     super(props, context);
 
     this.socket = props.socket
-
-    this.socket.status = 'initialized';
-
-    this.socket.on('connect', (data) => {
-      this.socket.status = 'connected';
-      debug('connected');
-    });
-
-    this.socket.on('disconnect', (data) => {
-      this.socket.status = 'disconnected';
-      debug('disconnect');
-    });
-
-    this.socket.on('error', (err) => {
-      this.socket.status = 'failed';
-      warning('error', err);
-    });
-
-    this.socket.on('reconnect', (data) => {
-      this.socket.status = 'connected';
-      debug('reconnect', data);
-    });
-
-    this.socket.on('reconnect_attempt', (data) => {
-      debug('reconnect_attempt');
-    });
-
-    this.socket.on('reconnecting', (data) => {
-      this.socket.status = 'reconnecting';
-      debug('reconnecting');
-    });
-
-    this.socket.on('reconnect_failed', (error) => {
-      this.socket.status = 'failed';
-      warning('reconnect_failed', error);
-    });
   }
 
   mergeOptions(options = {}) {
