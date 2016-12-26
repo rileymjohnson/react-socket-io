@@ -1,5 +1,4 @@
 import React from 'react';
-import SocketIO from 'socket.io-client';
 
 import { warning, debug } from './utils';
 
@@ -11,7 +10,7 @@ class Socket extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.socket = SocketIO(props.uri, this.mergeOptions(props.options));
+    this.socket = props.socket
 
     this.socket.status = 'initialized';
 

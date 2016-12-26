@@ -6,6 +6,7 @@
     <script src="/build/react.js"></script>
     <script src="/build/react-dom.js"></script>
     <script src="/build/react-socket-io.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
   </head>
   <body style="margin-left: 50px;">
@@ -41,13 +42,13 @@
         }
       });
 
+      var socket = io('http://localhost:8090', { transports: ['websocket'] });
+
       var AppContainer = React.createClass({
         render() {
-          var uri = 'http://localhost:8090'
-          var options = { transports: ['websocket'] }
 
           return (
-            <ReactSocketIO.Socket uri={uri} options={options}>
+            <ReactSocketIO.Socket socket={socket}>
               <Counter />
             </ReactSocketIO.Socket>
           )
