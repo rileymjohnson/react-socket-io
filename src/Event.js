@@ -37,7 +37,8 @@ class Event extends React.Component {
 };
 
 Event.contextTypes = {
-  socket: React.PropTypes.object.isRequired
+  socket: React.PropTypes.object.isRequired,
+  onError: React.PropTypes.func.isRequired
 };
 
 Event.propTypes = {
