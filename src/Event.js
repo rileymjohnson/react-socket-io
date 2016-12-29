@@ -9,10 +9,10 @@ class Event extends React.Component {
 
   componentDidMount() {
     const { event, handler } = this.props;
-    const { socket } = this.context;
+    const { socket, onError } = this.context;
 
-    if (!socket) {
-      warning('Socket IO connection has not been established.');
+    if (!socket || !socket.connected) {
+      onError()
       return;
     }
 

@@ -4,13 +4,17 @@ import { warning, debug } from './utils';
 
 class Socket extends React.Component {
   getChildContext() {
-    return { socket: this.socket };
+    return {
+      socket: this.socket,
+      onError: this.onError
+    };
   }
 
   constructor(props, context) {
     super(props, context);
 
     this.socket = props.socket
+    this.onError = props.onError
   }
 
   mergeOptions(options = {}) {
@@ -38,7 +42,8 @@ Socket.propTypes = {
 };
 
 Socket.childContextTypes = {
-  socket: React.PropTypes.object
+  socket: React.PropTypes.object,
+  onError: React.PropTypes.func
 };
 
 export default Socket;
